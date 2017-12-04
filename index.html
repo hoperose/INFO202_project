@@ -2,46 +2,137 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Movie Recommendation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Movie Recommendation</title>
 
-	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+    <!--  Scripts-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/querymovie.js"></script>
 </head>
 <body>
-	<nav class="white" role="navigation">
-		<div class="nav-wrapper container">
-			<a id="logo-container" href="#" class="brand-logo">Logo</a>
-			
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            
         </div>
     </nav>
-
+    <!-- Banner -->
     <div id="index-banner" class="parallax-container">
-    	<div class="section no-pad-bot">
-    		<div class="container">
-    			<br><br>
-    			<h1 class="header center pink-text pink-accent-4">Movie Recommendation</h1>
-    			<div class="row center">
-    				<h5 class="header col s12 light pink-text pink-accent-4">A service aims to recommend movies which meet your needs</h5>	
-    			</div>
-    			<div class="row center">
-    				<a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light pink darken-4">Get Recommended</a>
-    				
-    			</div>
+        <div class="section no-pad-bot">
+            <div class="container">
                 <br><br>
-    			
-    		</div>
-    	</div>
-    	<div class="parallax"><img src="images/background.jpg" alt=""></div>
-    </div>
-	
-
-	<!--  Scripts-->
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/materialize.js"></script>
-    <script type="text/javascript" src="js/init.js"></script>
-
-	</body>
+                <h1 class="header center pink-text pink-accent-4">Movie Recommendation</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light pink-text pink-accent-4">A service aims to recommend movies which meet your needs</h5>	
+                </div>
+                <div class="row center">
+                    <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light pink darken-4">Get Recommended</a>
+                    
+                </div>
+                <br><br>
+                
+            </div>
+        </div>
+        <div class="parallax"><img src="images/background.jpg" alt=""></div>
+      </div>
+      <!-- Result -->
+      <div id="result">
+          <button class="waves-effect waves-light btn" id="testBtn">Test</button>	
+        <!--Row -->
+        <div class ="row">
+        <!-- card --> 
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
+              <button class="btn waves-effect waves-light" onclick="getMovieData()">Get Similar Movie</button>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <!-- card --> 
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
+              <button class="btn waves-effect waves-light">Get Similar Movie</button>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <!-- card --> 
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
+              <button class="btn waves-effect waves-light">Get Similar Movie</button>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        <!-- card --> 
+        <div class="col s12 m4 l3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
+              <button class="btn waves-effect waves-light">Get Similar Movie</button>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+      
+      // test code
+      document.getElementById("testBtn").addEventListener("click", () => updateResult(myJSON));
+      
+      /* template
+      document.getElementById("myBtn").addEventListener("click", getMovieData(url, 'cat1').then(function(response) {
+        // The first runs when the promise resolves, with the request.response
+        // specified within the resolve() method.
+        var imageURL = window.URL.createObjectURL(response);
+        myImage.src = imageURL;
+        body.appendChild(myImage);
+        // The second runs when the promise
+        // is rejected, and logs the Error specified with the reject() method.
+      }, function(Error) {
+        console.log(Error);
+      }));
+      */
+      
+      </script>
+    </body>
 </html>
+
