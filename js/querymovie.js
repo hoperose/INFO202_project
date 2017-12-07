@@ -32,26 +32,15 @@ function getMovieDataOld(query, done) {
     xhr.send();
 }
 
-/*
-function getSimilar(id) {
-    var query = "rec/" + id;
-    console.log(query);
-    getMovieDataOld(query).then(function(response) {
-        updateResult(response);
-    }, function(Error) {
-        console.log(Error);
-    });
-}*/
-
 function search(userInput) {
     userInput = userInput.replace(/ /g,"+");
     searchStr = userInput;
     mode = "search";
-    var query = "search/" + userInput;
-    //console.log(query);
+    var query = "search?q=" + userInput;
+    console.log(query);
     getMovieDataOld(query, function(err, data) {
         if(err) {throw err;}
-        console.log(data);
+        //console.log(data);
         resetFilter();
         updateResult(data);
   })};
@@ -62,7 +51,7 @@ function getCategory(input) {
     console.log(query);
     getMovieDataOld(query, function(err, data) {
         if(err) {throw err;}
-        console.log(data);
+        //console.log(data);
         resetFilter();
         updateResult(data);
   })};
@@ -71,19 +60,20 @@ function getCategory(input) {
     recId = id;
     mode = "rec";
     var query = "rec/" + id;
-    //console.log(query);
+    console.log(query);
     getMovieDataOld(query, function(err, data) {
         if(err) {throw err;}
-        console.log(data);
+        //console.log(data);
         resetFilter();
         updateResult(data);
   })};
 
 function refreshMovie(query) {
     getMovieDataOld(query, function(err, data) {
+        console.log(query);
         if(err) {throw err;}
-        console.log(data);
-        resetFilter();
+        //console.log(data);
+        //resetFilter();
         updateResult(data);
   });
 }
@@ -101,8 +91,7 @@ function updateResult(data) {
     $("#result").empty();
     var movies = JSON.parse(data).movies;
     if (movies == "No result" || movies == "") {
-        $("#result").empty();
-        $("#result").append('<h5 class="white-text"> Oops, sorry, there is no search result for you : ( </h5>');
+        $("#result").append('<div class="row"><h5 class="white-text"> Oops, sorry, there is no search result for you : ( </h5></div>');
         return;
     }
     var movies = JSON.parse(data).movies;
@@ -113,6 +102,8 @@ function updateResult(data) {
             rowId = "row" + i/4;
             $("#result").append('<div class ="row" id="'+ rowId + '">');
         }
+        if (movies[i]['poster_path'] == "nan")
+            movies[i]['poster_path'] = "/vzmL6fP7aPKNKPRTFnZmiUfciyV.jpg";
         $("#"+rowId).append('<div class="col s6 m3" id ="' + movies[i]['id'] + '">\
             <div class="card hoverable">\
             <div class="card-image waves-effect waves-block waves-light">\
@@ -120,7 +111,7 @@ function updateResult(data) {
             </div>\
             <div class="card-content">\
                 <span class="one-line card-title activator grey-text text-darken-4">' + movies[i]['original_title'] + '<i class="material-icons right"></i></span>\
-                <button class="btn waves-effect waves-light" onclick="getSimilar(' + movies[i]['id'] + ')">Get Similar Movie</button>\
+                <button class="btn waves-effect waves-light recbtn" onclick="getSimilar(' + movies[i]['id'] + ')">Get Similar Movie</button>\
             </div>\
             <div class="card-reveal">\
                 <span class="card-title grey-text text-darken-4">' + movies[i]['original_title'] + '<i class="material-icons right">close</i></span>\
@@ -132,6 +123,8 @@ function updateResult(data) {
     }
     //var keyword = response['Predictions'][0]['Tag'];
     $('.one-line').ellipsis({lines: 1});
+    $('html, body').animate({
+        scrollTop: $('#upper').get(0).scrollHeight+95}, 600);
 }
 
 
@@ -147,7 +140,7 @@ $(".filter1").click(function(e){
             query = "movie?" + currCat + "&filter1=";
             break;
         case 'search':
-            query = "search/" + searchStr + "&filter1=";
+            query = "search?q=" + searchStr + "&filter1=";
             break;
         case 'rec':
             query = "rec/" + recId + "&filter1=";
@@ -184,7 +177,7 @@ $(".filter2").click(function(e){
             query = "movie?" + currCat + "&filter2=";
             break;
         case 'search':
-            query = "search/" + searchStr + "&filter2=";
+            query = "search?q=" + searchStr + "&filter2=";
             break;
         case 'rec':
             query = "rec/" + recId + "&filter2=";
@@ -204,7 +197,7 @@ $("#searchbar").submit(function (e){
     search($("#search").val());
   });
 
-$("input").click(function (e) {
+$(".with-gap").click(function (e) {
     var sortby;
     var query;
     switch(mode) {
@@ -212,7 +205,7 @@ $("input").click(function (e) {
             query = "movie?" + currCat;
             break;
         case 'search':
-            query = "search/" + searchStr;
+            query = "search?q=" + searchStr;
             break;
         case 'rec':
             query = "rec/" + recId;

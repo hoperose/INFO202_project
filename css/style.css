@@ -115,6 +115,14 @@ label {
   cursor: pointer;
 }
 
+.recbtn {
+  background-color: #c2185b 
+}
+
+.recbtn:hover {
+  background-color: #c2185b 
+}
+
 .filter1, .filter2 {
   margin-top: 0.3em;
   font-size:0.8rem;
@@ -136,6 +144,10 @@ label {
 }
 .filter1:click, .filter2:click {
   background-color: #ff4081;
+}
+
+.card-image img {
+  height: 400px;
 }
 
 .icon-block {
