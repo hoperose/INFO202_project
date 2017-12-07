@@ -124,13 +124,13 @@ def search(query):
     result = whole_index.copy()
     for tok in toks:
         if tok not in title_ii:
-            result = set()
+            result = []
             break
         else:
             result = result & title_ii[tok]
     result = sorted(list(result))
     if len(result) == 0:
-        return {"None"}
+        return json.dumps({"movies":"No result"})
     else:
         return dump_data(whole_data.loc[result])
 
