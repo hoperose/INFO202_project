@@ -120,7 +120,7 @@ def search(query):
     global title_ii
     query = query.lower()
     print('query', query)
-    toks = word_tokenize(query)
+    toks = query.split('+')
     result = whole_index.copy()
     for tok in toks:
         if tok not in title_ii:
