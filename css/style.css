@@ -6,6 +6,7 @@
  * Made By MaterializeCSS.com
  */
 
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -80,6 +81,64 @@ p {
   }
 }
 
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 87%;
+  }
+}
+
+label {
+  color: #f7abb6;
+}
+
+
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+  border: 2px solid #d46060;
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+  border: 2px solid #d46060;
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+  border: 2px solid #d46060;
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+  background-color: #d46060;
+}
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+  border: 2px solid #d46060;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.filter1, .filter2 {
+  margin-top: 0.3em;
+  font-size:0.8rem;
+  height: 2.3rem;
+  padding:0 1rem;
+  background-color: #c2185b 
+}
+
+.filter1:hover, .filter2:hover {
+  background-color: #ff4081;
+}
+
+.filter1:focus, .filter2:focus {
+  background-color: #ff4081;
+}
+
+.filter1:active, .filter2:active {
+  background-color: #ff4081;
+}
+.filter1:click, .filter2:click {
+  background-color: #ff4081;
+}
+
+
 .icon-block {
   padding: 0 15px;
 }
@@ -89,4 +148,23 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+.ellip {
+  display: block;
+  height: 100%;
+}
+
+.ellip-line {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  max-width: 100%;
+}
+
+.ellip,
+.ellip-line {
+  position: relative;
+  overflow: hidden;
 }

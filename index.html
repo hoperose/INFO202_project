@@ -11,50 +11,132 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
     <!--  Scripts-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <script type="text/javascript" src="js/init.js"></script>
-    <script type="text/javascript" src="js/querymovie.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/jquery.ellipsis.min.js"></script>
 </head>
 <body>
   <!-- nav bar-->
   <nav class="white">
     <div class="nav-wrapper container white">
       <div class="brand-logo"><img src="images/logo.jpg" alt=""></div>
-        <form>
-            <div class="right input-field pink darken-4">
-                <input id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-                
-            </div>
-        </form>
+      <form id="searchbar">
+          <div class="right input-field pink darken-4">
+              <input id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+              
+          </div>
+      </form>	
     </div>
   </nav>
   <!-- Banner -->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
-        <!--  -->
-        <br><br>
-        <h1 class="header center pink-text pink-darken-4">MOV4U</h1>
-        <div class="row center">
-          <h5 class="header col s12 light pink-text pink-darken-4">A movie recommendation service aims to find movies which meet your needs</h5>	
+        <!--  Upper  -->
+        <div class="section" id="landing">
+          <h1 class="header center pink-text pink-darken-4">MOV4U</h1>
+          <div class="row center">
+            <h5 class="header col s12 light pink-text pink-darken-4">A movie recommendation service aims to find movies which meet your needs</h5>	
+          </div>
+          <div class="row center">
+            <a href="#" id="start" class="btn-large waves-effect waves-light pink darken-4 toolbar">Get Started</a>
+          </div>
+          <br><br>
         </div>
-        <div class="row center">
-          <a href="./categories.html" class="btn-large waves-effect waves-light pink darken-4 toolbar">Get Started</a>
+
+        <div class="section" id="category" style="display:none">
+          <div class="row center">
+            <div class="row1">
+              <!-- change the first circle to All icon -->
+              <a class="clickable cat" role="button" ><img src="images/cate1.png" alt="" class="circle" id="cat=1"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate2.png" alt="" class="circle" id="cat=2"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate3.png" alt="" class="circle" id="cat=3"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate8.png" alt="" class="circle" id="cat=4-1"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate10.png" alt="" class="circle" id="cat=4-2"></a>
+            </div>
+            <div class="row2">
+              <a class="clickable cat" role="button" ><img src="images/cate4.png" alt="" class="circle" id="cat=5"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate5.png" alt="" class="circle" id="cat=6"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate9.png" alt="" class="circle" id="cat=0"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate7.png" alt="" class="circle" id="cat=7"></a>
+              <a class="clickable cat" role="button" ><img src="images/cate6.png" alt="" class="circle" id="cat=8"></a>
+            </div>
+          </div>
         </div>
-        <br><br>
+
       </div>
     </div>
     <div class="parallax"><img src="images/background.jpg" alt=""></div>
   </div>   
   <!-- Result -->
-  <div id="result">
-      <button class="waves-effect waves-light btn" id="testBtn">Test</button>	
-    <!--Row -->
-    <div class ="row">
-    <!-- card --> 
+  <div class="container">
+    <div class="section">
+      <div class="row valign-wrapper">
+        <div class="col s1 m1 l1">
+          <span class="white-text" style="font-size:1.2em">Genre:</span>
+        </div>
+        <div class="col s11 m11 l11">
+          <a class="waves-effect waves-light btn filter2" id="Fantasy">Fantasy</a>
+          <a class="waves-effect waves-light btn filter2" id="Horror">Horror</a>
+          <a class="waves-effect waves-light btn filter2" id="Documentary">Documentary</a>
+          <a class="waves-effect waves-light btn filter2" id="Mystery">Mystery</a>
+          <a class="waves-effect waves-light btn filter2" id="War">War</a>
+          <a class="waves-effect waves-light btn filter2" id="Thriller">Thriller</a>
+          <a class="waves-effect waves-light btn filter2" id="Sci-Fi">Sci-Fi</a>
+          <a class="waves-effect waves-light btn filter2" id="Comedy">Comedy</a>
+          <a class="waves-effect waves-light btn filter2" id="Drama">Drama</a>
+          <a class="waves-effect waves-light btn filter2" id="Music">Music</a>
+          <a class="waves-effect waves-light btn filter2" id="TV Movie">TV Movie</a>
+          <a class="waves-effect waves-light btn filter2" id="History">History</a>
+          <a class="waves-effect waves-light btn filter2" id="Foreign">Foreign</a>
+          <a class="waves-effect waves-light btn filter2" id="Action">Action</a>
+          <a class="waves-effect waves-light btn filter2" id="Romance">Romance</a>
+          <a class="waves-effect waves-light btn filter2" id="Western">Western</a>
+          <a class="waves-effect waves-light btn filter2" id="Family">Family</a>
+          <a class="waves-effect waves-light btn filter2" id="Animation">Animation</a>
+          <a class="waves-effect waves-light btn filter2" id="Adventure">Adventure</a>
+        </div>
+      </div>
+      <div class="row valign-wrapper">
+          <div class="col s1 m1 l1">
+              <span class="white-text" style="font-size:1.2em">Time:</span>
+          </div>
+          <div class="col s11 m11 l11">
+              <a class="waves-effect waves-light btn filter1" id="ft1">Last 5 Years</a>
+              <a class="waves-effect waves-light btn filter1" id="ft2">Last 6-10 Years</a>
+              <a class="waves-effect waves-light btn filter1" id="ft3">Last 10+ Years</a>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col s1 m1 l1"><span class="white-text" style="font-size:1.2em">Sort by:</span></div>
+          <div class="col s11 m11 l11">
+          <form id="sort">
+                <input class="with-gap" name="group1" type="radio" id="time0" value="0" />
+                <label for="time0">More Recent</label>
+                <input class="with-gap" name="group1" type="radio" id="time1" value="1" />
+                <label for="time1">Less Recent</label>
+                <input class="with-gap" name="group1" type="radio" id="pop0" value="2" />
+                <label for="pop0">Populairy: High to Low</label>
+                <input class="with-gap" name="group1" type="radio" id="pop1" value="3" />
+                <label for="pop1">Populairy: Low to High</label>
+                <input class="with-gap" name="group1" type="radio" id="rate0" value="4" />
+                <label for="rate0">Rating: High to Low</label>
+                <input class="with-gap" name="group1" type="radio" id="rate1" value="5" />
+                <label for="rate1">Rating: Low to High</label>
+          </form>
+        </div>
+      </div>
+
+          
+      </div>
+    </div>
+  <div class="row" id="result">
+    <!--<button class="waves-effect waves-light btn" id="testBtn">Test</button>-->
+
+    <!-- card 
     <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
@@ -69,62 +151,25 @@
           <p>Here is some more information about this product that is only revealed once clicked on.</p>
         </div>
       </div>
-    </div>
-    <!-- card --> 
-    <div class="col s12 m4 l3">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
-          <button class="btn waves-effect waves-light">Get Similar Movie</button>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-    </div>
-    <!-- card --> 
-    <div class="col s12 m4 l3">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
-          <button class="btn waves-effect waves-light">Get Similar Movie</button>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-    </div>
-    <!-- card --> 
-    <div class="col s12 m4 l3">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="http://image.tmdb.org/t/p/w342/rhIRbceoE9lR4veEXuwCC2wARtG.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Movie Title<i class="material-icons right">more_vert</i></span>
-          <button class="btn waves-effect waves-light">Get Similar Movie</button>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Movie Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-    </div>
+    </div> -->
     </div>
   </div>
-  <script type="text/javascript">
+  <script src="js/querymovie.js"></script>
+  <script>
   
+
+
   // test code
-  document.getElementById("testBtn").addEventListener("click", () => updateResult(myJSON));
-  
+//   //document.getElementById("testBtn").addEventListener("click", () => updateResult(myJSON));
+// document.getElementById("testBtn").addEventListener("click", () => getMovieDataOld("movie?cat=4-2", function(err, data) {
+//   if(err) {throw err;}
+//   console.log(data);
+//   updateResult(data);
+// }));
+
+
+
+
   /* template
   document.getElementById("myBtn").addEventListener("click", getMovieData(url, 'cat1').then(function(response) {
     // The first runs when the promise resolves, with the request.response
