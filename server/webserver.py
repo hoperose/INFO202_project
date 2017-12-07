@@ -130,10 +130,11 @@ def search():
     query = request.args.get("q")
     query = query.lower()
     print('query', query)
-    toks = query.split('+')
+    toks = query.split(' ')
     result = whole_index.copy()
     for tok in toks:
         if tok not in title_ii:
+            print("tok not found", tok)
             result = set({})
             break
         else:
