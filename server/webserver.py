@@ -66,6 +66,8 @@ def select_category(cate_idx, indices, cat_val=None):
     if cate_idx == 0:
         return indices
     if cat_val is None:
+        if cate_idx == 8:
+            return indices & cat_ii_list[cate_idx - 1][False]
         return indices & cat_ii_list[cate_idx - 1][True]
     else:
         return indices & cat_ii_list[cate_idx - 1][cat_val]
