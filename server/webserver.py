@@ -47,12 +47,12 @@ def dump_data(df):
     for idx, row in df.iterrows():
         current_dict = {}
         current_dict["id"] = str(idx)
-        current_dict["poster_path"] = row['poster_path']
-        current_dict["overview"] = row["overview"]
-        current_dict["original_title"] = row["original_title"]
-        current_dict["original_language"] = row["original_language"]
-        current_dict["release_date"] = row["release_date"]
-        current_dict["genre_list"] = row["genre_list"]
+        current_dict["poster_path"] = str(row['poster_path'])
+        current_dict["overview"] = str(row["overview"])
+        current_dict["original_title"] = str(row["original_title"])
+        current_dict["original_language"] = str(row["original_language"])
+        current_dict["release_date"] = str(row["release_date"])
+        current_dict["genre_list"] = str(row["genre_list"])
         current_dict["popularity"] = str(row["popularity"])
         current_dict["vote_average"] = str(row["vote_average"])
         movies.append(current_dict)
@@ -63,7 +63,6 @@ def dump_data(df):
 
 def select_category(cate_idx, indices, cat_val=None):
     global cat_ii_list
-    print('inselectcategory', cate_idx, cat_val)
     if cate_idx == 0:
         return indices
     if cat_val is None:
@@ -75,7 +74,7 @@ def select_category(cate_idx, indices, cat_val=None):
 def get_movie():
     cat = request.args.get('cat')
     sort = request.args.get('sort')
-    ascending = request.args.get('ascending')
+    # ascending = request.args.get('ascending')
     filter1 = request.args.get('filter1')
     filter2 = request.args.get('filter2')
     sortby = request.args.get('sort') # str
@@ -114,11 +113,19 @@ def get_recommendation(qid):
     recommendation_indices = compute_similarity(int(qid), whole_data) 
     return dump_data(whole_data.loc[recommendation_indices])
 
-@app.route('/search/<query>', methods=["GET"])
-def search(query):
+@app.route('/search', methods=["GET"])
+def search():
     global whole_data
     global whole_index
     global title_ii
+    sort = request.args.get('sort')
+    # ascending = request.args.get('ascending')
+    filter1 = request.args.get('filter1')
+    filter2 = request.args.get('filter2')
+    sortby = request.args.get('sort') # str
+    ascending = request.args.get('ascending') # 1 / 0
+
+    query = request.args.get("q")
     query = query.lower()
     print('query', query)
     toks = query.split('+')
@@ -129,7 +136,22 @@ def search(query):
             break
         else:
             result = result & title_ii[tok]
+
+    # filter
+    if filter1 is not None:
+        filter1 = int(filter1)
+        result = result & filter_ii_list[0][filter1]
+    if filter2 is not None:
+        result = result & filter_ii_list[1][filter2]
+
     result = sorted(list(result))
+    if sortby is not None:
+        result_df = whole_data.loc[result]
+        ascending = True if ascending == '1' else False
+        result_df = result_df.sort_values(sortby, ascending=ascending)
+    else:
+        result_df = whole_data.loc[result]
+
     if len(result) == 0:
         return json.dumps({"movies":"No result"})
     else:
