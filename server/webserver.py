@@ -63,9 +63,10 @@ def dump_data(df):
 
 def select_category(cate_idx, indices, cat_val=None):
     global cat_ii_list
+    print('inselectcategory', cate_idx, cat_val)
     if cate_idx == 0:
         return indices
-    if cat_val is not None:
+    if cat_val is None:
         return indices & cat_ii_list[cate_idx - 1][True]
     else:
         return indices & cat_ii_list[cate_idx - 1][cat_val]
@@ -90,7 +91,7 @@ def get_movie():
         cate_val = cat.split('-')[1]
         result = select_category(int(cate_num), result, cat_val=int(cate_val))
     else:
-        result = select_category(int(cat), result)
+        result = select_category(int(cat), result, cat_val=None)
     # filter
     if filter1 is not None:
         filter1 = int(filter1)
