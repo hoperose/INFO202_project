@@ -58,7 +58,8 @@ def dump_data(df):
         movies.append(current_dict)
     if len(movies) > 30:
         movies = movies[0:30]
-    return json.dumps(movies)
+    my_dict = {"movies": movies}
+    return json.dumps(my_dict)
 
 def select_category(cate_idx, indices, cat_val=None):
     global cat_ii_list
