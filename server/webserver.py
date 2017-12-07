@@ -134,7 +134,7 @@ def search():
     result = whole_index.copy()
     for tok in toks:
         if tok not in title_ii:
-            result = []
+            result = set({})
             break
         else:
             result = result & title_ii[tok]
